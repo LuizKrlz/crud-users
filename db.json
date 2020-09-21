@@ -53,6 +53,17 @@
       "phone": null,
       "created_at": "2019-07-31T16:36:55.937-03:00",
       "updated_at": "2019-07-31T16:36:55.937-03:00"
+    },
+    {
+      "name": "robert",
+      "email": "robert@mail.com",
+      "external_code": "tes",
+      "role": "0",
+      "id": "f6ad8b69-827e-443e-8737-09d5853d0b02",
+      "tags": [
+        "asd",
+        "asd"
+      ]
     }
   ]
 }
