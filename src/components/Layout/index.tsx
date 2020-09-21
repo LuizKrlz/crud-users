@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 
 import useStyles from "./styles";
-import { Group } from "@material-ui/icons";
+import { Group, Home } from "@material-ui/icons";
 import { useRouter } from "next/router";
 
 const Layout: FC = ({ children }) => {
@@ -42,7 +42,7 @@ const Layout: FC = ({ children }) => {
                     <List>
                         <ListItem button onClick={() => router.push("/")}>
                             <ListItemIcon>
-                                <Group />
+                                <Home />
                             </ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItem>

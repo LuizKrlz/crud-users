@@ -1,33 +1,33 @@
-import React, { FC, useEffect, useState } from "react";
-import { Button, Container, Grid, Paper, Typography } from "@material-ui/core";
+import React, { useEffect, useState } from 'react'
+import { Container, Grid, Paper, Typography } from '@material-ui/core'
 
-import useStyles from "./styles";
-import api from "../../services/api";
-import Layout from "../../components/Layout";
+import useStyles from './styles'
+import api from '../../services/api'
+import Layout from '../../components/layout'
 
 interface User {
-    id: number;
-    name: string;
-    email: string;
-    external_code: string;
+    id: number
+    name: string
+    email: string
+    external_code: string
 }
 
-const Home: FC = () => {
-    const classes = useStyles();
-    const [users, setUsers] = useState<User | []>([]);
+export default function () {
+    const classes = useStyles()
+    const [users, setUsers] = useState<User | []>([])
 
     useEffect(() => {
         async function getUsers(): Promise<any> {
             try {
-                const { data } = await api.get("users");
-                setUsers(data);
+                const { data } = await api.get('users')
+                setUsers(data)
             } catch (err) {
-                console.log(err);
+                console.log(err)
             }
         }
 
-        getUsers();
-    }, []);
+        getUsers()
+    }, [])
 
     return (
         <Layout>
@@ -45,7 +45,5 @@ const Home: FC = () => {
                 </Container>
             </Paper>
         </Layout>
-    );
-};
-
-export default Home;
+    )
+}

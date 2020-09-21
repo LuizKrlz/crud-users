@@ -1,4 +1,4 @@
-import React, { FC, useState, ReactNode } from "react";
+import React, { useState, ReactNode, PropsWithChildren } from "react";
 import Link from "next/link";
 import {
     Container,
@@ -17,7 +17,7 @@ import { uuid } from "uuidv4";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers";
 
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/layout";
 import api from "../../../services/api";
 import Tags from "../../../components/tags";
 
@@ -25,7 +25,7 @@ import useStyles from "./styles";
 
 import { User } from "../../../shared/types";
 
-type formData = {
+type FormData = {
     name: string;
     email: string;
     external_code: string;
@@ -33,11 +33,11 @@ type formData = {
     tags: string[];
 };
 
-type FormProps = {
+type FormProps = PropsWithChildren<{
     title: string;
     user?: User;
     children?: ReactNode;
-};
+}>;
 
 const schema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -48,13 +48,13 @@ const schema = yup.object().shape({
     external_code: yup.string().required("External code is required"),
 });
 
-const Form: FC<FormProps> = ({ title, user }) => {
+export default function ({ title, user }: FormProps) {
     const classes = useStyles();
     const { register, handleSubmit, errors } = useForm<FormData>({
         resolver: yupResolver(schema),
     });
 
-    const [tags, setTags] = useState([]);
+    const [tags, setTags] = useState<string[]>([]);
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
@@ -165,7 +165,9 @@ const Form: FC<FormProps> = ({ title, user }) => {
 
                         <Tags
                             tags={user ? user.tags : []}
-                            handleChange={(newtags) => setTags(newtags)}
+                            handleChange={(newtags: string[]) =>
+                                setTags(newtags)
+                            }
                         />
 
                         <Button
@@ -183,6 +185,4 @@ const Form: FC<FormProps> = ({ title, user }) => {
             </Container>
         </Layout>
     );
-};
-
-export default Form;
+}

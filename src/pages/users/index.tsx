@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from 'react'
 import {
     Container,
     Grid,
@@ -10,41 +10,41 @@ import {
     TableRow,
     TableCell,
     TableBody,
-    IconButton,
-} from "@material-ui/core";
+    IconButton
+} from '@material-ui/core'
 
-import useStyles from "./styles";
-import api from "../../services/api";
-import Layout from "../../components/Layout";
-import { Add, Delete, Edit } from "@material-ui/icons";
-import Link from "next/link";
-import { User, RemoveParam } from "../../shared/types";
+import useStyles from './styles'
+import api from '../../services/api'
+import Layout from '../../components/layout'
+import { Add, Delete, Edit } from '@material-ui/icons'
+import Link from 'next/link'
+import { User, RemoveParam } from '../../shared/types'
 
-const List: FC = () => {
-    const classes = useStyles();
-    const [users, setUsers] = useState<User[]>([]);
+export default function () {
+    const classes = useStyles()
+    const [users, setUsers] = useState<User[]>([])
 
     async function getUsers(): Promise<any> {
         try {
-            const { data } = await api.get("users");
-            setUsers(data);
+            const { data } = await api.get('users')
+            setUsers(data)
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
     useEffect(() => {
-        getUsers();
-    }, []);
+        getUsers()
+    }, [])
 
     const handleRemove = async ({ id }: RemoveParam) => {
         try {
-            await api.delete(`/users/${id}`);
-            getUsers();
+            await api.delete(`/users/${id}`)
+            getUsers()
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
-    };
+    }
 
     return (
         <Layout>
@@ -76,7 +76,7 @@ const List: FC = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {users.map((user) => (
+                                {users.map(user => (
                                     <TableRow key={user.id}>
                                         <TableCell component="th" scope="row">
                                             {user.name}
@@ -99,7 +99,7 @@ const List: FC = () => {
                                             <IconButton
                                                 onClick={() =>
                                                     handleRemove({
-                                                        id: user.id,
+                                                        id: user.id
                                                     })
                                                 }
                                                 size="small"
@@ -115,7 +115,5 @@ const List: FC = () => {
                 </Grid>
             </Container>
         </Layout>
-    );
-};
-
-export default List;
+    )
+}
