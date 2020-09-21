@@ -3,10 +3,9 @@ import { Chip, IconButton, TextField } from "@material-ui/core";
 
 import useStyles from "./styles";
 import { Add } from "@material-ui/icons";
-import { RemoveParam } from "../../shared/types";
 
 type TagsProps = {
-    tags: [string];
+    tags: String[] | [];
     handleChange: Function;
     children?: ReactNode;
 };
@@ -15,9 +14,9 @@ type HandleRemoveParam = {
     itemIndice: number;
 };
 
-const Tags: FC = ({ tags, handleChange }: TagsProps) => {
+const Tags: FC<TagsProps> = ({ tags, handleChange }) => {
     const classes = useStyles();
-    const [items, setItems] = useState<[string?]>(tags ? tags : []);
+    const [items, setItems] = useState<String[] | []>(tags);
     const [newItem, setNewItem] = useState("");
 
     const handleDelete = ({ itemIndice }: HandleRemoveParam) => {
@@ -50,7 +49,7 @@ const Tags: FC = ({ tags, handleChange }: TagsProps) => {
             </div>
             {items.length > 0 && (
                 <div className={classes.containerChips}>
-                    {items.map((value, index) => (
+                    {items.map((value: String, index: number) => (
                         <Chip
                             key={index}
                             label={value}

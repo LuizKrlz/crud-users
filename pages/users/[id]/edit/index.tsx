@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 import UserForm from "../../../../src/pages/users/form";
 import api from "../../../../src/services/api";
@@ -14,10 +14,10 @@ const UserEdit: FC = ({ user }: UserEditProps) => {
     return <UserForm title="Edit user" user={user} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const { id } = params;
-
-    const { data: user } = await api.get(`/users/${id}`);
+export const getServerSideProps: GetServerSideProps = async ({
+    params,
+}: GetServerSidePropsContext) => {
+    const { data: user } = await api.get(`/users/${params?.id}`);
 
     return {
         props: {

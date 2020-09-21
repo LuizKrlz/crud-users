@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, ReactNode } from "react";
 import Link from "next/link";
 import {
     Container,
@@ -33,10 +33,10 @@ type formData = {
 type FormProps = {
     title: string;
     user?: User;
-    children?: React.ReactNode;
+    children?: ReactNode;
 };
 
-const Form: FC = ({ title, user }: FormProps) => {
+const Form: FC<FormProps> = ({ title, user }) => {
     const classes = useStyles();
     const { register, handleSubmit, errors } = useForm<FormData>();
     const [tags, setTags] = useState([]);
@@ -134,7 +134,7 @@ const Form: FC = ({ title, user }: FormProps) => {
                         </div>
 
                         <Tags
-                            tags={user?.tags}
+                            tags={user ? user.tags : []}
                             handleChange={(newtags) => setTags(newtags)}
                         />
 
