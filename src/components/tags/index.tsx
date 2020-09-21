@@ -5,7 +5,7 @@ import useStyles from "./styles";
 import { Add } from "@material-ui/icons";
 
 type TagsProps = {
-    tags: String[] | [];
+    tags: string[];
     handleChange: Function;
     children?: ReactNode;
 };
@@ -16,7 +16,7 @@ type HandleRemoveParam = {
 
 const Tags: FC<TagsProps> = ({ tags, handleChange }) => {
     const classes = useStyles();
-    const [items, setItems] = useState<String[] | []>(tags);
+    const [items, setItems] = useState<string[]>(tags);
     const [newItem, setNewItem] = useState("");
 
     const handleDelete = ({ itemIndice }: HandleRemoveParam) => {

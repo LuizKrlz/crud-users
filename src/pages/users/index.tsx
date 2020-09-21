@@ -16,13 +16,13 @@ import {
 import useStyles from "./styles";
 import api from "../../services/api";
 import Layout from "../../components/Layout";
-import { Add, Delete, Edit, Remove } from "@material-ui/icons";
+import { Add, Delete, Edit } from "@material-ui/icons";
 import Link from "next/link";
 import { User, RemoveParam } from "../../shared/types";
 
 const List: FC = () => {
     const classes = useStyles();
-    const [users, setUsers] = useState<User | []>([]);
+    const [users, setUsers] = useState<User[]>([]);
 
     async function getUsers(): Promise<any> {
         try {
@@ -98,7 +98,9 @@ const List: FC = () => {
 
                                             <IconButton
                                                 onClick={() =>
-                                                    handleRemove(user.id)
+                                                    handleRemove({
+                                                        id: user.id,
+                                                    })
                                                 }
                                                 size="small"
                                             >

@@ -1,19 +1,12 @@
 {
   "users": [
     {
-      "id": 272,
-      "email": "pp@vnda.com.br",
       "name": "PP",
-      "admin": false,
-      "renew_password": false,
-      "role": 1,
-      "access_token": "d490bd7d192bfc7415bcff801d3ebecbe2be8e2837e0b4535232d4afdec9a889",
+      "email": "pp@vnda.com.br",
+      "external_code": "asdsads",
+      "role": "1",
       "tags": [],
-      "external_code": null,
-      "phone_area": "",
-      "phone": "",
-      "created_at": "2020-09-11T08:22:49.536-03:00",
-      "updated_at": "2020-09-18T18:48:25.206-03:00"
+      "id": 272
     },
     {
       "name": "Usuário Teste",
@@ -60,21 +53,15 @@
       "updated_at": "2019-07-31T16:36:55.937-03:00"
     },
     {
-      "id": 202,
-      "email": "lara@vnda.com",
       "name": "Lara",
-      "admin": false,
-      "renew_password": false,
-      "role": 0,
-      "access_token": null,
-      "tags": [
-        "dev"
-      ],
+      "email": "lara@vnda.com",
       "external_code": "POA",
-      "phone_area": null,
-      "phone": null,
-      "created_at": "2019-07-31T16:27:15.495-03:00",
-      "updated_at": "2019-07-31T16:27:15.495-03:00"
+      "role": "0",
+      "tags": [
+        "dev",
+        "teste"
+      ],
+      "id": 202
     }
   ]
 }
